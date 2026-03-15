@@ -106,8 +106,8 @@ class UniverseGenerator:
         """
         stars = []
         
-        # SVG viewBox dimensions (cover size: 1920x600)
-        width = 1920
+        # SVG viewBox dimensions (1200×600)
+        width = 1200
         height = 600
         center_x = width / 2
         center_y = height / 2

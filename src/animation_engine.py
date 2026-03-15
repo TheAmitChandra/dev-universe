@@ -1,305 +1,125 @@
 """
-Animation Engine
-Generates SVG animation elements for the universe.
+Animation Engine v2
+Generates premium SVG animation elements with 3D orbital mechanics.
+Uses elliptical orbits with rotate transforms for realistic motion.
 """
 
 import math
-from typing import Dict, List, Any, Tuple
 import random
+from typing import Tuple
 
 
 class AnimationEngine:
-    """Generates SVG animation definitions and elements."""
-    
+    """Generates SVG animation and filter definitions for 3D universe."""
+
+    # ── Filters & Gradients ──────────────────────────────────────────
+
     @staticmethod
-    def create_orbit_animation(
-        planet_id: str,
-        orbit_distance: float,
-        duration: float,
-        angle_offset: float = 0
-    ) -> str:
-        """
-        Create circular orbit animation path for a planet.
-        
-        Args:
-            planet_id: Unique identifier for the planet
-            orbit_distance: Radius of orbit in pixels
-            duration: Duration of one complete orbit in seconds
-            angle_offset: Starting angle offset in degrees
-            
-        Returns:
-            SVG animateMotion element as string
-        """
-        # Calculate the circular path
-        # SVG path for a circle: M cx cy m -r 0 a r r 0 1 0 (r*2) 0 a r r 0 1 0 -(r*2) 0
-        r = orbit_distance
-        path = f"M 0,0 m -{r},0 a {r},{r} 0 1,1 {r*2},0 a {r},{r} 0 1,1 -{r*2},0"
-        
-        # Calculate starting rotation based on angle offset
-        rotate_transform = f'rotate({angle_offset} 500 500)' if angle_offset != 0 else ''
-        
-        animation = f'''
-    <animateMotion
-      dur="{duration}s"
-      repeatCount="indefinite"
-      path="{path}"
-      rotate="auto"
-      {f'transform="{rotate_transform}"' if rotate_transform else ''}
-    />'''
-        
-        return animation
-    
-    @staticmethod
-    def create_rotation_animation(duration: float, direction: str = "normal") -> str:
-        """
-        Create rotation animation for spinning objects.
-        
-        Args:
-            duration: Duration of one complete rotation in seconds
-            direction: Animation direction ("normal" or "reverse")
-            
-        Returns:
-            SVG animateTransform element as string
-        """
+    def sun_gradient(sun_color: str, glow_color: str) -> str:
         return f'''
-    <animateTransform
-      attributeName="transform"
-      attributeType="XML"
-      type="rotate"
-      from="0 0 0"
-      to="360 0 0"
-      dur="{duration}s"
-      repeatCount="indefinite"
-      direction="{direction}"
-    />'''
-    
-    @staticmethod
-    def create_pulse_animation(
-        attribute: str,
-        from_value: Any,
-        to_value: Any,
-        duration: float
-    ) -> str:
-        """
-        Create pulsing animation for glowing effects.
-        
-        Args:
-            attribute: SVG attribute to animate (e.g., "opacity", "r")
-            from_value: Starting value
-            to_value: Ending value
-            duration: Duration of one pulse in seconds
-            
-        Returns:
-            SVG animate element as string
-        """
-        return f'''
-    <animate
-      attributeName="{attribute}"
-      values="{from_value};{to_value};{from_value}"
-      dur="{duration}s"
-      repeatCount="indefinite"
-    />'''
-    
-    @staticmethod
-    def create_twinkle_animation(delay: float = 0) -> str:
-        """
-        Create twinkling animation for stars.
-        
-        Args:
-            delay: Animation delay in seconds
-            
-        Returns:
-            SVG animate element as string
-        """
-        duration = random.uniform(1.5, 3.5)
-        return f'''
-    <animate
-      attributeName="opacity"
-      values="0.3;1;0.3"
-      dur="{duration}s"
-      begin="{delay}s"
-      repeatCount="indefinite"
-    />'''
-    
-    @staticmethod
-    def create_moon_orbit(
-        moon_index: int,
-        planet_size: float,
-        orbit_radius: float,
-        duration: float
-    ) -> Tuple[float, float, str]:
-        """
-        Create moon orbit animation around a planet.
-        
-        Args:
-            moon_index: Index of the moon (0, 1, 2...)
-            planet_size: Size of the parent planet
-            orbit_radius: Radius of moon's orbit around planet
-            duration: Duration of one orbit
-            
-        Returns:
-            Tuple of (moon_x, moon_y, animation_element)
-        """
-        # Calculate moon starting position
-        angle_offset = (360 / 3) * moon_index  # Spread moons evenly
-        angle_rad = math.radians(angle_offset)
-        
-        moon_x = orbit_radius * math.cos(angle_rad)
-        moon_y = orbit_radius * math.sin(angle_rad)
-        
-        # Create orbit path around (0, 0) which will be relative to planet
-        path = f"M 0,0 m -{orbit_radius},0 a {orbit_radius},{orbit_radius} 0 1,1 {orbit_radius*2},0 a {orbit_radius},{orbit_radius} 0 1,1 -{orbit_radius*2},0"
-        
-        animation = f'''
-      <animateMotion
-        dur="{duration}s"
-        repeatCount="indefinite"
-        path="{path}"
-        begin="{angle_offset/360 * duration}s"
-      />'''
-        
-        return moon_x, moon_y, animation
-    
-    @staticmethod
-    def create_asteroid_trajectory(trajectory_id: int, total_trajectories: int) -> str:
-        """
-        Create asteroid trajectory animation across the galaxy.
-        
-        Args:
-            trajectory_id: Unique trajectory identifier
-            total_trajectories: Total number of asteroid trajectories
-            
-        Returns:
-            SVG animateMotion element as string
-        """
-        # Generate varied trajectories for cover dimensions (1920x600)
-        # Some diagonal, some curved
-        
-        # Randomize based on trajectory_id for consistency
-        random.seed(trajectory_id)
-        
-        # Start from random edge
-        edge = trajectory_id % 4  # 0=top, 1=right, 2=bottom, 3=left
-        
-        if edge == 0:  # Top
-            start_x = random.uniform(200, 1720)
-            start_y = 0
-            end_x = random.uniform(200, 1720)
-            end_y = 600
-        elif edge == 1:  # Right
-            start_x = 1920
-            start_y = random.uniform(50, 550)
-            end_x = 0
-            end_y = random.uniform(50, 550)
-        elif edge == 2:  # Bottom
-            start_x = random.uniform(200, 1720)
-            start_y = 600
-            end_x = random.uniform(200, 1720)
-            end_y = 0
-        else:  # Left
-            start_x = 0
-            start_y = random.uniform(50, 550)
-            end_x = 1920
-            end_y = random.uniform(50, 550)
-        
-        # Add some curve for variety
-        mid_x = (start_x + end_x) / 2 + random.uniform(-300, 300)
-        mid_y = (start_y + end_y) / 2 + random.uniform(-100, 100)
-        
-        # Create curved path
-        path = f"M {start_x},{start_y} Q {mid_x},{mid_y} {end_x},{end_y}"
-        
-        duration = random.uniform(25, 50)
-        delay = (trajectory_id / max(total_trajectories, 1)) * 15
-        
-        animation = f'''
-    <animateMotion
-      dur="{duration}s"
-      repeatCount="indefinite"
-      path="{path}"
-      begin="{delay}s"
-    />'''
-        
-        # Reset random seed
-        random.seed()
-        
-        return animation
-    
-    @staticmethod
-    def create_nebula_animation() -> str:
-        """
-        Create subtle animation for nebula background effects.
-        
-        Returns:
-            SVG animate element as string
-        """
-        return '''
-    <animate
-      attributeName="opacity"
-      values="0.1;0.2;0.1"
-      dur="20s"
-      repeatCount="indefinite"
-    />'''
-    
-    @staticmethod
-    def create_glow_filter(filter_id: str, color: str, intensity: float = 1.0) -> str:
-        """
-        Create SVG filter for glow effect.
-        
-        Args:
-            filter_id: Unique filter ID
-            color: Glow color in hex format
-            intensity: Glow intensity multiplier
-            
-        Returns:
-            SVG filter definition as string
-        """
-        blur_amount = 4 * intensity
-        
-        return f'''
-  <filter id="{filter_id}" x="-50%" y="-50%" width="200%" height="200%">
-    <feGaussianBlur in="SourceGraphic" stdDeviation="{blur_amount}" result="blur"/>
-    <feFlood flood-color="{color}" flood-opacity="0.8"/>
-    <feComposite in2="blur" operator="in" result="glow"/>
-    <feMerge>
-      <feMergeNode in="glow"/>
-      <feMergeNode in="glow"/>
-      <feMergeNode in="SourceGraphic"/>
-    </feMerge>
-  </filter>'''
-    
-    @staticmethod
-    def create_gradient(gradient_id: str, color1: str, color2: str) -> str:
-        """
-        Create radial gradient for celestial bodies.
-        
-        Args:
-            gradient_id: Unique gradient ID
-            color1: Center color in hex format
-            color2: Edge color in hex format
-            
-        Returns:
-            SVG radialGradient definition as string
-        """
-        return f'''
-  <radialGradient id="{gradient_id}">
-    <stop offset="0%" style="stop-color:{color1};stop-opacity:1" />
-    <stop offset="100%" style="stop-color:{color2};stop-opacity:1" />
+  <radialGradient id="sunGrad" cx="40%" cy="40%">
+    <stop offset="0%"   stop-color="#ffffff" stop-opacity="1"/>
+    <stop offset="20%"  stop-color="{glow_color}" stop-opacity="1"/>
+    <stop offset="60%"  stop-color="{sun_color}" stop-opacity="1"/>
+    <stop offset="100%" stop-color="{sun_color}" stop-opacity="0.8"/>
+  </radialGradient>
+  <radialGradient id="sunCorona" cx="50%" cy="50%">
+    <stop offset="0%"   stop-color="{glow_color}" stop-opacity="0.6"/>
+    <stop offset="50%"  stop-color="{glow_color}" stop-opacity="0.15"/>
+    <stop offset="100%" stop-color="{sun_color}" stop-opacity="0"/>
   </radialGradient>'''
-    
+
     @staticmethod
-    def create_comet_tail_gradient(gradient_id: str) -> str:
-        """
-        Create gradient for comet/PR tails.
-        
-        Args:
-            gradient_id: Unique gradient ID
-            
-        Returns:
-            SVG linearGradient definition as string
-        """
+    def planet_gradient(pid: str, color: str, light: str, dark: str) -> str:
         return f'''
-  <linearGradient id="{gradient_id}">
-    <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
-    <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+  <radialGradient id="{pid}Grad" cx="35%" cy="30%">
+    <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.9"/>
+    <stop offset="15%"  stop-color="{light}" stop-opacity="1"/>
+    <stop offset="55%"  stop-color="{color}" stop-opacity="1"/>
+    <stop offset="100%" stop-color="{dark}" stop-opacity="1"/>
+  </radialGradient>'''
+
+    @staticmethod
+    def glow_filter(fid: str, std: float = 4) -> str:
+        return f'''
+  <filter id="{fid}" x="-100%" y="-100%" width="300%" height="300%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="{std}" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>'''
+
+    @staticmethod
+    def shadow_filter() -> str:
+        return '''
+  <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="blur"/>
+    <feOffset dx="0" dy="3" result="shifted"/>
+    <feComponentTransfer result="shadow"><feFuncA type="linear" slope="0.45"/></feComponentTransfer>
+    <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>'''
+
+    @staticmethod
+    def bg_gradient() -> str:
+        return '''
+  <radialGradient id="bgCenter" cx="50%" cy="50%">
+    <stop offset="0%"   stop-color="#161b33" stop-opacity="1"/>
+    <stop offset="100%" stop-color="#060a14" stop-opacity="1"/>
+  </radialGradient>'''
+
+    @staticmethod
+    def comet_gradient() -> str:
+        return '''
+  <linearGradient id="cometTail" x1="0%" y1="50%" x2="100%" y2="50%">
+    <stop offset="0%"   stop-color="#79c0ff" stop-opacity="1"/>
+    <stop offset="100%" stop-color="#79c0ff" stop-opacity="0"/>
   </linearGradient>'''
+
+    @staticmethod
+    def moon_gradient() -> str:
+        return '''
+  <radialGradient id="moonGrad" cx="35%" cy="35%">
+    <stop offset="0%"  stop-color="#e6edf3" stop-opacity="1"/>
+    <stop offset="100%" stop-color="#6e7681" stop-opacity="1"/>
+  </radialGradient>'''
+
+    # ── Animations ───────────────────────────────────────────────────
+
+    @staticmethod
+    def orbit_rotate(cx: float, cy: float, dur: float, start_angle: float = 0) -> str:
+        """Smooth rotate transform around (cx, cy)."""
+        return f'''    <animateTransform attributeName="transform" type="rotate"
+      from="{start_angle} {cx} {cy}" to="{start_angle + 360} {cx} {cy}"
+      dur="{dur}s" repeatCount="indefinite"/>'''
+
+    @staticmethod
+    def pulse(attr: str, v1, v2, dur: float) -> str:
+        return f'''    <animate attributeName="{attr}" values="{v1};{v2};{v1}" dur="{dur}s" repeatCount="indefinite"/>'''
+
+    @staticmethod
+    def twinkle(delay: float) -> str:
+        dur = round(random.uniform(2, 5), 1)
+        return f'''    <animate attributeName="opacity" values="0.2;1;0.2" dur="{dur}s" begin="{round(delay,1)}s" repeatCount="indefinite"/>'''
+
+    @staticmethod
+    def comet_motion(tid: int, total: int, w: int, h: int) -> str:
+        """Create a straight-line comet trajectory across the viewport."""
+        random.seed(tid + 9999)
+        edge = tid % 4
+        if edge == 0:
+            sx, sy = random.uniform(0.1*w, 0.9*w), -20
+            ex, ey = random.uniform(0.1*w, 0.9*w), h + 20
+        elif edge == 1:
+            sx, sy = w + 20, random.uniform(0.1*h, 0.9*h)
+            ex, ey = -20, random.uniform(0.1*h, 0.9*h)
+        elif edge == 2:
+            sx, sy = random.uniform(0.1*w, 0.9*w), h + 20
+            ex, ey = random.uniform(0.1*w, 0.9*w), -20
+        else:
+            sx, sy = -20, random.uniform(0.1*h, 0.9*h)
+            ex, ey = w + 20, random.uniform(0.1*h, 0.9*h)
+        mx = (sx+ex)/2 + random.uniform(-200, 200)
+        my = (sy+ey)/2 + random.uniform(-60, 60)
+        dur = round(random.uniform(18, 40), 1)
+        delay = round((tid / max(total, 1)) * 12, 1)
+        random.seed()
+        return f'''    <animateMotion path="M{sx:.0f},{sy:.0f} Q{mx:.0f},{my:.0f} {ex:.0f},{ey:.0f}"
+      dur="{dur}s" begin="{delay}s" repeatCount="indefinite"/>'''
