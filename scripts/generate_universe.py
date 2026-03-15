@@ -8,8 +8,9 @@ import os
 import sys
 from pathlib import Path
 
-# Add src directory to path
-sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
+# Add project root to path so we can import from src
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
 
 from src.universe_generator import UniverseGenerator
 from src.svg_renderer import SVGRenderer
