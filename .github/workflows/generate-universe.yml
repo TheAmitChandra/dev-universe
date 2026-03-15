@@ -53,32 +53,29 @@ jobs:
         run: |
           python scripts/generate_universe.py
       
-      - name: 📊 Check if universe changed
-        id: check_changes
-        run: |
-          if git diff --quiet output/universe.svg; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-            echo "ℹ️ No changes detected in universe.svg"
-          else
-            echo "changed=true" >> $GITHUB_OUTPUT
-            echo "✨ Universe has been updated!"
-          fi
-      
-      - name: 💾 Commit and push if changed
-        if: steps.check_changes.outputs.changed == 'true'
+      - name: � Commit universe
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add output/universe.svg
-          git commit -m "🌌 Update dev universe [skip ci]"
-          git push
+          
+          # Check if there are changes to commit
+          if git diff --cached --quiet; then
+            echo "ℹ️ No changes detected in universe.svg"
+            echo "changed=false" >> $GITHUB_ENV
+          else
+            git commit -m "🌌 Update dev universe [skip ci]"
+            git push
+            echo "✨ Universe has been updated!"
+            echo "changed=true" >> $GITHUB_ENV
+          fi
       
       - name: 🎉 Job summary
         run: |
           echo "## 🌌 Dev Universe Generation Complete!" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Status" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.check_changes.outputs.changed }}" == "true" ]; then
+          if [ "${{ env.changed }}" == "true" ]; then
             echo "✅ Universe updated and committed" >> $GITHUB_STEP_SUMMARY
           else
             echo "ℹ️ No changes detected" >> $GITHUB_STEP_SUMMARY
