@@ -172,7 +172,7 @@ class AnimationEngine:
         Returns:
             SVG animateMotion element as string
         """
-        # Generate varied trajectories
+        # Generate varied trajectories for cover dimensions (1920x600)
         # Some diagonal, some curved
         
         # Randomize based on trajectory_id for consistency
@@ -182,35 +182,35 @@ class AnimationEngine:
         edge = trajectory_id % 4  # 0=top, 1=right, 2=bottom, 3=left
         
         if edge == 0:  # Top
-            start_x = random.uniform(100, 900)
+            start_x = random.uniform(200, 1720)
             start_y = 0
-            end_x = random.uniform(100, 900)
-            end_y = 1000
+            end_x = random.uniform(200, 1720)
+            end_y = 600
         elif edge == 1:  # Right
-            start_x = 1000
-            start_y = random.uniform(100, 900)
+            start_x = 1920
+            start_y = random.uniform(50, 550)
             end_x = 0
-            end_y = random.uniform(100, 900)
+            end_y = random.uniform(50, 550)
         elif edge == 2:  # Bottom
-            start_x = random.uniform(100, 900)
-            start_y = 1000
-            end_x = random.uniform(100, 900)
+            start_x = random.uniform(200, 1720)
+            start_y = 600
+            end_x = random.uniform(200, 1720)
             end_y = 0
         else:  # Left
             start_x = 0
-            start_y = random.uniform(100, 900)
-            end_x = 1000
-            end_y = random.uniform(100, 900)
+            start_y = random.uniform(50, 550)
+            end_x = 1920
+            end_y = random.uniform(50, 550)
         
         # Add some curve for variety
-        mid_x = (start_x + end_x) / 2 + random.uniform(-200, 200)
-        mid_y = (start_y + end_y) / 2 + random.uniform(-200, 200)
+        mid_x = (start_x + end_x) / 2 + random.uniform(-300, 300)
+        mid_y = (start_y + end_y) / 2 + random.uniform(-100, 100)
         
         # Create curved path
         path = f"M {start_x},{start_y} Q {mid_x},{mid_y} {end_x},{end_y}"
         
-        duration = random.uniform(20, 40)
-        delay = (trajectory_id / max(total_trajectories, 1)) * 10
+        duration = random.uniform(25, 50)
+        delay = (trajectory_id / max(total_trajectories, 1)) * 15
         
         animation = f'''
     <animateMotion

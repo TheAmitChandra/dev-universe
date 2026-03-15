@@ -79,7 +79,7 @@ def main():
         
         # Initialize renderer
         print("\n🎨 Initializing SVG renderer...")
-        renderer = SVGRenderer(width=1000, height=1000)
+        renderer = SVGRenderer(width=1920, height=600)  # Cover dimensions
         
         # Render SVG
         svg_content = renderer.render(universe)

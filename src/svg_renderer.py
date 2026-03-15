@@ -14,13 +14,13 @@ from .animation_engine import AnimationEngine
 class SVGRenderer:
     """Renders universe data as animated SVG."""
     
-    def __init__(self, width: int = 1000, height: int = 1000):
+    def __init__(self, width: int = 1920, height: int = 600):
         """
         Initialize SVG renderer.
         
         Args:
-            width: SVG canvas width
-            height: SVG canvas height
+            width: SVG canvas width (cover size)
+            height: SVG canvas height (cover size)
         """
         self.width = width
         self.height = height
@@ -84,7 +84,7 @@ class SVGRenderer:
      viewBox="0 0 {self.width} {self.height}" 
      xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink"
-     style="background: #0d1117;">
+     style="background: linear-gradient(135deg, #0a0e27 0%, #1a1b3d 50%, #0d1117 100%);">
 '''
     
     def _render_footer(self) -> str:
@@ -95,61 +95,93 @@ class SVGRenderer:
         """Render SVG definitions (gradients, filters, etc.)."""
         defs = ['  <defs>']
         
-        # Sun glow filter
-        sun_color = universe.sun['color']
-        defs.append(self.animation_engine.create_glow_filter('sunGlow', sun_color, 2.0))
+        # Advanced shadow filter for 3D depth
+        defs.append('''  <filter id="shadow3D" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+    <feOffset dx="0" dy="4" result="offsetblur"/>
+    <feComponentTransfer>
+      <feFuncA type="linear" slope="0.5"/>
+    </feComponentTransfer>
+    <feMerge>
+      <feMergeNode/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>''')
         
-        # Planet gradients and filters
+        # Sun glow filter with enhanced intensity
+        sun_color = universe.sun['color']
+        defs.append(self.animation_engine.create_glow_filter('sunGlow', sun_color, 3.5))
+        
+        # Radial gradient for background depth
+        defs.append('''  <radialGradient id="bgGradient" cx="50%" cy="50%">
+    <stop offset="0%" style="stop-color:#1a2332;stop-opacity:0.3" />
+    <stop offset="100%" style="stop-color:#000000;stop-opacity:0.8" />
+  </radialGradient>''')
+        
+        # Planet gradients and filters with 3D effect
         for i, planet in enumerate(universe.planets):
             planet_id = f"planet{i}"
             
-            # Gradient for 3D effect
-            lighter_color = self._lighten_color(planet.color, 0.3)
-            darker_color = self._darken_color(planet.color, 0.2)
-            defs.append(self.animation_engine.create_gradient(
-                f'{planet_id}Gradient', 
-                lighter_color, 
-                darker_color
-            ))
+            # Enhanced 3D gradient
+            lighter_color = self._lighten_color(planet.color, 0.5)
+            mid_color = planet.color
+            darker_color = self._darken_color(planet.color, 0.4)
             
-            # Subtle glow filter
+            defs.append(f'''  <radialGradient id="{planet_id}Gradient" cx="35%" cy="35%">
+    <stop offset="0%" style="stop-color:{lighter_color};stop-opacity:1" />
+    <stop offset="40%" style="stop-color:{mid_color};stop-opacity:1" />
+    <stop offset="100%" style="stop-color:{darker_color};stop-opacity:1" />
+  </radialGradient>''')
+            
+            # Strong glow filter for planets
             defs.append(self.animation_engine.create_glow_filter(
                 f'{planet_id}Glow', 
                 planet.color, 
-                0.5
+                1.5
             ))
         
-        # Comet tail gradient for PRs
-        defs.append(self.animation_engine.create_comet_tail_gradient('cometTail'))
+        # Enhanced comet tail gradient
+        defs.append('''  <linearGradient id="cometTail">
+    <stop offset="0%" style="stop-color:#58a6ff;stop-opacity:0.9" />
+    <stop offset="50%" style="stop-color:#79c0ff;stop-opacity:0.5" />
+    <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+  </linearGradient>''')
         
         defs.append('  </defs>')
         return '\n'.join(defs)
     
     def _render_background(self, universe: UniverseData) -> str:
-        """Render background rectangle."""
+        """Render enhanced background with depth."""
         return f'''
-  <!-- Background -->
-  <rect width="{self.width}" height="{self.height}" fill="#0d1117"/>
+  <!-- Background with depth -->
+  <rect width="{self.width}" height="{self.height}" fill="url(#bgGradient)"/>
+  
+  <!-- Ambient space fog -->
+  <circle cx="{self.width * 0.2}" cy="{self.height * 0.3}" r="300" 
+          fill="#1f2d4d" opacity="0.1" filter="url(#sunGlow)"/>
+  <circle cx="{self.width * 0.8}" cy="{self.height * 0.7}" r="350" 
+          fill="#2d1f4d" opacity="0.08" filter="url(#sunGlow)"/>
 '''
     
     def _render_nebula(self) -> str:
-        """Render nebula background effects."""
-        nebula_parts = ['  <!-- Nebula effects -->']
+        """Render enhanced nebula effects with depth."""
+        nebula_parts = ['  <!-- Nebula effects with depth -->']
         
-        # Create a few large nebula clouds
+        # Create dynamic nebula clouds across the cover
         nebula_configs = [
-            (200, 300, 200, '#1f6feb', 0.08),
-            (700, 600, 250, '#8957e5', 0.06),
-            (400, 700, 180, '#da3633', 0.05),
+            (self.width * 0.15, self.height * 0.4, 280, '#1f6feb', 0.12),
+            (self.width * 0.75, self.height * 0.3, 320, '#8957e5', 0.10),
+            (self.width * 0.45, self.height * 0.65, 250, '#da3633', 0.08),
+            (self.width * 0.85, self.height * 0.7, 200, '#56d364', 0.07),
         ]
         
         for i, (cx, cy, r, color, opacity) in enumerate(nebula_configs):
             nebula_parts.append(f'''
-  <circle cx="{cx}" cy="{cy}" r="{r}" 
+  <ellipse cx="{cx}" cy="{cy}" rx="{r}" ry="{r * 0.7}" 
           fill="{color}" opacity="{opacity}"
-          filter="url(#sunGlow)">
+          filter="url(#sunGlow)" transform="rotate({i * 30} {cx} {cy})">
 {self.animation_engine.create_nebula_animation()}
-  </circle>''')
+  </ellipse>''')
         
         return '\n'.join(nebula_parts)
     
@@ -169,30 +201,46 @@ class SVGRenderer:
         return '\n'.join(star_parts)
     
     def _render_sun(self, sun: Dict[str, Any]) -> str:
-        """Render the central sun (primary language)."""
-        size = sun['size']
+        """Render the central sun with enhanced 3D effects."""
+        size = sun['size'] * 1.3  # Larger sun
         color = sun['color']
         glow_color = sun['glow_color']
         name = sun['name']
         
         sun_svg = f'''
-  <!-- Central Sun ({name}) -->
+  <!-- Central Sun ({name}) with 3D effects -->
   <g id="sun" transform="translate({self.center_x}, {self.center_y})">
-    <!-- Outer glow -->
-    <circle r="{size * 1.5}" fill="{glow_color}" opacity="0.3"
+    <!-- Outer corona layers -->
+    <circle r="{size * 2.5}" fill="{glow_color}" opacity="0.15"
             filter="url(#sunGlow)">
-{self.animation_engine.create_pulse_animation('r', size * 1.5, size * 1.7, 4)}
+{self.animation_engine.create_pulse_animation('r', size * 2.5, size * 2.8, 6)}
+{self.animation_engine.create_pulse_animation('opacity', 0.1, 0.2, 5)}
     </circle>
     
-    <!-- Sun body -->
-    <circle r="{size}" fill="{color}" filter="url(#sunGlow)">
-{self.animation_engine.create_pulse_animation('opacity', 0.9, 1.0, 3)}
+    <circle r="{size * 1.8}" fill="{glow_color}" opacity="0.25"
+            filter="url(#sunGlow)">
+{self.animation_engine.create_pulse_animation('r', size * 1.8, size * 2.0, 4)}
     </circle>
     
-    <!-- Sun label -->
-    <text y="{size + 20}" text-anchor="middle" 
-          fill="#ffffff" font-size="14" font-weight="bold"
-          font-family="Arial, sans-serif">
+    <!-- Sun body with 3D gradient -->
+    <circle r="{size}" fill="{color}" filter="url(#sunGlow) url(#shadow3D)">
+{self.animation_engine.create_pulse_animation('opacity', 0.95, 1.0, 3)}
+    </circle>
+    
+    <!-- Inner highlight for 3D effect -->
+    <circle cx="{-size * 0.2}" cy="{-size * 0.2}" r="{size * 0.4}" 
+            fill="{glow_color}" opacity="0.6"/>
+    
+    <!-- Sun label with shadow -->
+    <text y="{size + 30}" text-anchor="middle" 
+          fill="#000000" font-size="20" font-weight="bold"
+          font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif"
+          opacity="0.3">
+      {name}
+    </text>
+    <text y="{size + 28}" text-anchor="middle" 
+          fill="#ffffff" font-size="20" font-weight="bold"
+          font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif">
       {name}
     </text>
   </g>
@@ -231,22 +279,34 @@ class SVGRenderer:
       <g>
 {self.animation_engine.create_orbit_animation(planet_id, planet.orbit_distance, planet.orbit_duration, planet.angle_offset)}
         
-        <!-- Planet body -->
+        <!-- Planet body with 3D effect -->
         <circle r="{planet.size}" 
                 fill="url(#{planet_id}Gradient)"
-                filter="url(#{planet_id}Glow)"
-                stroke="{planet.color}" stroke-width="1">
+                filter="url(#{planet_id}Glow) url(#shadow3D)"
+                stroke="{self._lighten_color(planet.color, 0.3)}" stroke-width="2">
           <title>{planet.name}&#10;⭐ {planet.stars}&#10;{planet.language}</title>
         </circle>
+        
+        <!-- Shine/highlight for 3D depth -->
+        <ellipse cx="{-planet.size * 0.3}" cy="{-planet.size * 0.3}" 
+                 rx="{planet.size * 0.35}" ry="{planet.size * 0.25}" 
+                 fill="white" opacity="0.4"/>
         
         <!-- Moons -->
 {self._render_moons(planet, planet.size)}
         
         <!-- Planet label -->
         <g opacity="0.8">
-          <text y="{planet.size + 15}" text-anchor="middle"
-                fill="#ffffff" font-size="10" font-weight="normal"
-                font-family="Arial, sans-serif">
+          <!-- Planet label with shadow -->
+          <text y="{planet.size + 18}" text-anchor="middle"
+                fill="#000000" font-size="12" font-weight="600"
+                font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+                opacity="0.4">
+            {planet.name}
+          </text>
+          <text y="{planet.size + 16}" text-anchor="middle"
+                fill="#ffffff" font-size="12" font-weight="600"
+                font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
             {planet.name}
           </text>
         </g>
@@ -299,58 +359,84 @@ class SVGRenderer:
         return '\n'.join(asteroid_parts)
     
     def _render_issue(self, issue: AsteroidData) -> str:
-        """Render an issue as a small asteroid."""
-        size = 3
+        """Render an issue as an asteroid with 3D effect."""
+        size = 5
         animation = self.animation_engine.create_asteroid_trajectory(
             issue.trajectory_id, 20
         )
         
         return f'''
-    <circle r="{size}" fill="#f85149" opacity="0.8">
-      <title>Issue #{issue.number}: {issue.title}</title>
+    <g>
+      <circle r="{size}" fill="#f85149" opacity="0.9" 
+              filter="url(#shadow3D)">
+        <title>Issue #{issue.number}: {issue.title}</title>
 {animation}
-    </circle>'''
+      </circle>
+      <circle r="{size * 0.4}" cx="{-size * 0.3}" cy="{-size * 0.3}" 
+              fill="#ff7b72" opacity="0.7">
+{animation}
+      </circle>
+    </g>'''
     
     def _render_pr(self, pr: AsteroidData) -> str:
-        """Render a PR as a glowing comet."""
-        size = 4
+        """Render a PR as a glowing comet with enhanced effects."""
+        size = 6
         animation = self.animation_engine.create_asteroid_trajectory(
             pr.trajectory_id, 20
         )
         
         return f'''
     <g>
-      <!-- Comet tail -->
-      <ellipse rx="15" ry="3" fill="url(#cometTail)" opacity="0.6">
+      <!-- Comet tail with glow -->
+      <ellipse rx="30" ry="5" fill="url(#cometTail)" opacity="0.8"
+               filter="url(#sunGlow)">
 {animation}
       </ellipse>
-      <!-- Comet head -->
-      <circle r="{size}" fill="#58a6ff" opacity="0.9">
+      <!-- Comet head with 3D effect -->
+      <circle r="{size}" fill="#58a6ff" opacity="0.95"
+              filter="url(#shadow3D)">
         <title>PR #{pr.number}: {pr.title}</title>
+{animation}
+      </circle>
+      <!-- Inner glow -->
+      <circle r="{size * 0.5}" fill="#79c0ff" opacity="0.9">
 {animation}
       </circle>
     </g>'''
     
     def _render_info_overlay(self, universe: UniverseData) -> str:
-        """Render info overlay with statistics."""
+        """Render enhanced info overlay with statistics."""
         metadata = universe.metadata
         
-        info_y = self.height - 80
+        info_y = self.height - 65
         
         return f'''
-  <!-- Info overlay -->
-  <g id="info" opacity="0.7">
-    <text x="20" y="{info_y}" 
-          fill="#8b949e" font-size="12" font-family="monospace">
-      @{universe.username}'s Dev Universe
+  <!-- Info overlay with glassmorphism -->
+  <g id="info">
+    <!-- Background panel -->
+    <rect x="20" y="{info_y - 35}" width="550" height="80" 
+          rx="12" fill="#161b22" opacity="0.8" 
+          stroke="#30363d" stroke-width="1"/>
+    
+    <!-- Title -->
+    <text x="35" y="{info_y - 10}" 
+          fill="#58a6ff" font-size="16" font-weight="bold"
+          font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+      @{universe.username}'s Development Universe
     </text>
-    <text x="20" y="{info_y + 18}" 
-          fill="#8b949e" font-size="10" font-family="monospace">
-      🪐 {metadata['planet_count']} repos  •  ⭐ {metadata['total_stars']} stars  •  💫 {metadata['total_commits']} commits
+    
+    <!-- Stats line 1 -->
+    <text x="35" y="{info_y + 12}" 
+          fill="#c9d1d9" font-size="13" font-weight="500"
+          font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+      🪐 {metadata['planet_count']} repositories  •  ⭐ {metadata['total_stars']} stars  •  💫 {metadata['total_commits']} recent commits
     </text>
-    <text x="20" y="{info_y + 33}" 
-          fill="#8b949e" font-size="10" font-family="monospace">
-      ☄️ {metadata['total_issues']} issues  •  🚀 {metadata['total_prs']} PRs
+    
+    <!-- Stats line 2 -->
+    <text x="35" y="{info_y + 30}" 
+          fill="#8b949e" font-size="12"
+          font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+      ☄️ {metadata['total_issues']} open issues  •  🚀 {metadata['total_prs']} pull requests  •  Updates every 12 hours
     </text>
   </g>
 '''
