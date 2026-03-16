@@ -36,7 +36,7 @@ class UniverseGenerator:
         self.config = config or {}
         self.github_token = self.config.get('GITHUB_TOKEN')
         self.username = self.config.get('GITHUB_USERNAME')
-        self.background_star_count = int(self.config.get('BACKGROUND_STARS', 200))
+        self.background_star_count = int(self.config.get('BACKGROUND_STARS', 250))
         
         # Initialize components
         self.api = GitHubAPI(token=self.github_token, username=self.username)
@@ -106,9 +106,9 @@ class UniverseGenerator:
         """
         stars = []
         
-        # SVG viewBox dimensions (1200×600)
-        width = 1200
-        height = 600
+        # SVG viewBox dimensions (880×440)
+        width = 880
+        height = 440
         center_x = width / 2
         center_y = height / 2
         

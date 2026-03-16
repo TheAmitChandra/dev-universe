@@ -97,13 +97,13 @@ class RepositoryAnalyzer:
         self.show_asteroids = self.config.get('SHOW_ASTEROIDS', True)
         self.orbit_speed_multiplier = float(self.config.get('ORBIT_SPEED_MULTIPLIER', 1.0))
         
-        # Visual parameters for 1200×600 viewport (elliptical orbits)
-        self.min_planet_size = 14
-        self.max_planet_size = 38
-        self.min_orbit_distance = 110
-        self.max_orbit_distance = 480
+        # Visual parameters for 880×440 viewport
+        self.min_planet_size = 18
+        self.max_planet_size = 45
+        self.min_orbit_distance = 80
+        self.max_orbit_distance = 380
         self.min_orbit_duration = 25  # seconds
-        self.max_orbit_duration = 90  # seconds
+        self.max_orbit_duration = 80  # seconds
     
     def analyze_repositories(self, repos: List[Dict]) -> List[PlanetData]:
         """
@@ -361,7 +361,7 @@ class RepositoryAnalyzer:
         return {
             'name': primary_language,
             'color': self._get_language_color(primary_language),
-            'size': 55,  # Sun radius — large and dominant
+            'size': 65,  # Sun radius — big and dominant in 880×440
             'glow_color': self._lighten_color(self._get_language_color(primary_language))
         }
     
