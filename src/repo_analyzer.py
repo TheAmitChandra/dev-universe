@@ -98,10 +98,10 @@ class RepositoryAnalyzer:
         self.orbit_speed_multiplier = float(self.config.get('ORBIT_SPEED_MULTIPLIER', 1.0))
         
         # Visual parameters for 880×440 viewport
-        self.min_planet_size = 18
-        self.max_planet_size = 45
-        self.min_orbit_distance = 80
-        self.max_orbit_distance = 380
+        self.min_planet_size = 22
+        self.max_planet_size = 48
+        self.min_orbit_distance = 90
+        self.max_orbit_distance = 370
         self.min_orbit_duration = 25  # seconds
         self.max_orbit_duration = 80  # seconds
     
@@ -117,8 +117,13 @@ class RepositoryAnalyzer:
         """
         print(f"🔬 Analyzing {len(repos)} repositories...")
         
-        # Sort by stars and take top N
-        sorted_repos = sorted(repos, key=lambda r: r.get('stargazers_count', 0), reverse=True)
+        # Sort by activity score (stars + commits + forks) for better ranking
+        def _score(r):
+            return (r.get('stargazers_count', 0) * 10
+                    + r.get('commit_count', 0)
+                    + r.get('forks_count', 0) * 5
+                    + r.get('size', 0) // 100)
+        sorted_repos = sorted(repos, key=_score, reverse=True)
         top_repos = sorted_repos[:self.max_planets]
         
         planets = []
@@ -156,11 +161,12 @@ class RepositoryAnalyzer:
         updated_at = repo.get('updated_at', '')
         age_days = self._calculate_age_days(created_at)
         
-        # Get commit count
+        # Get commit count and repo size (KB)
         commit_count = repo.get('commit_count', 0)
+        repo_size = repo.get('size', 0)  # KB
         
         # Calculate visual properties
-        size = self._calculate_planet_size(stars)
+        size = self._calculate_planet_size(stars, commit_count, repo_size)
         orbit_distance = self._calculate_orbit_distance(age_days, index, total)
         orbit_duration = self._calculate_orbit_duration(commit_count)
         angle_offset = (360 / total) * index  # Spread planets evenly
@@ -197,25 +203,23 @@ class RepositoryAnalyzer:
         except Exception:
             return 0
     
-    def _calculate_planet_size(self, stars: int) -> float:
-        """
-        Calculate planet size based on star count.
-        Uses logarithmic scale for better distribution.
+    def _calculate_planet_size(self, stars: int, commits: int = 0, repo_size: int = 0) -> float:
+        """Planet size from multiple signals so 0-star repos still vary.
         
-        Args:
-            stars: Number of repository stars
-            
-        Returns:
-            Planet size in pixels
+        Combines stars, commits, and repo size into a composite score.
+        Even repos with 0 stars get differentiated by their commit
+        count and code size.
         """
-        if stars <= 0:
+        # Composite activity score (each metric contributes)
+        score = (stars * 10) + commits + (repo_size // 50)
+        
+        if score <= 0:
             return self.min_planet_size
         
-        # Logarithmic scale
-        log_stars = math.log10(stars + 1)
-        max_log = math.log10(1000)  # Assume 1000 as high star count
+        log_score = math.log10(score + 1)
+        max_log = math.log10(5000)  # normalizing ceiling
         
-        normalized = min(log_stars / max_log, 1.0)
+        normalized = min(log_score / max_log, 1.0)
         size_range = self.max_planet_size - self.min_planet_size
         
         return self.min_planet_size + (size_range * normalized)
@@ -361,7 +365,7 @@ class RepositoryAnalyzer:
         return {
             'name': primary_language,
             'color': self._get_language_color(primary_language),
-            'size': 65,  # Sun radius — big and dominant in 880×440
+            'size': 60,  # Sun radius — big and dominant in 880×440
             'glow_color': self._lighten_color(self._get_language_color(primary_language))
         }
     
