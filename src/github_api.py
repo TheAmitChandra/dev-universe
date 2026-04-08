@@ -322,3 +322,31 @@ class GitHubAPI:
         """Get current rate limit status."""
         endpoint = "/rate_limit"
         return self._make_request(endpoint)
+
+    # ------------------------------------------------------------------ #
+    #  Terminal Card helpers                                               #
+    # ------------------------------------------------------------------ #
+
+    def get_user_profile(self) -> Dict:
+        """Fetch public user profile from /users/{username}."""
+        return self._make_request(f"/users/{self.username}") or {}
+
+    def get_recent_push_count(self) -> int:
+        """
+        Estimate commit activity from the last ~100 public events.
+        Returns the sum of distinct commits across PushEvents.
+        """
+        try:
+            events = self._make_request(
+                f"/users/{self.username}/events",
+                {"per_page": 100}
+            )
+            if not events:
+                return 0
+            return sum(
+                e.get("payload", {}).get("distinct_size", 1)
+                for e in events
+                if e.get("type") == "PushEvent"
+            )
+        except Exception:
+            return 0
