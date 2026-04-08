@@ -50,6 +50,7 @@ class ProfileBuilder:
       1. GET /users/{username}              — profile info
       2. GET /users/{username}/repos        — all repos (1-2 pages)
       3. GET /users/{username}/events       — recent push activity
+      4. GET /repos/{u}/{r}/languages       — per-repo byte counts (cached)
     """
 
     def __init__(
@@ -75,8 +76,12 @@ class ProfileBuilder:
         # ── own (non-fork) repos ──────────────────────────────────
         own = [r for r in repos if not r.get("fork")]
 
-        # Top repos by stars
-        top_sorted = sorted(own, key=lambda r: r.get("stargazers_count", 0), reverse=True)
+        # Top repos by stars then by most recently updated
+        top_sorted = sorted(
+            own,
+            key=lambda r: (r.get("stargazers_count", 0), r.get("updated_at", "")),
+            reverse=True,
+        )
         top_repos = [
             RepoSummary(
                 name=r["name"],
@@ -89,18 +94,31 @@ class ProfileBuilder:
             for r in top_sorted[: self.max_repos]
         ]
 
-        # Language breakdown — count repos per primary language
-        lang_counts: Dict[str, int] = {}
-        for r in own:
-            lang = r.get("language")
-            if lang:
-                lang_counts[lang] = lang_counts.get(lang, 0) + 1
+        # Language breakdown — use actual byte counts from the API
+        print("🌐  Fetching language byte counts…")
+        lang_bytes = self.api.get_user_languages()  # {lang: total_bytes}
 
-        total_lang = sum(lang_counts.values()) or 1
-        lang_pct = {
-            lang: round(count / total_lang * 100)
-            for lang, count in sorted(lang_counts.items(), key=lambda x: -x[1])
-        }
+        if lang_bytes:
+            total_bytes = sum(lang_bytes.values()) or 1
+            lang_pct = {
+                lang: round(bytes_ / total_bytes * 100)
+                for lang, bytes_ in sorted(lang_bytes.items(), key=lambda x: -x[1])
+            }
+            # Drop any that round to 0%
+            lang_pct = {k: v for k, v in lang_pct.items() if v > 0}
+        else:
+            # Fallback: count repos per primary language
+            lang_counts: Dict[str, int] = {}
+            for r in own:
+                lang = r.get("language")
+                if lang:
+                    lang_counts[lang] = lang_counts.get(lang, 0) + 1
+            total_lang = sum(lang_counts.values()) or 1
+            lang_pct = {
+                lang: round(count / total_lang * 100)
+                for lang, count in sorted(lang_counts.items(), key=lambda x: -x[1])
+            }
+
         top_langs = dict(list(lang_pct.items())[: self.max_languages])
 
         # Total stars across own repos
