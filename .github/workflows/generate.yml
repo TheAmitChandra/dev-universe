@@ -1,0 +1,43 @@
+name: Generate Terminal Card
+
+on:
+  schedule:
+    # Refresh every 6 hours
+    - cron: "0 */6 * * *"
+  workflow_dispatch:   # Allow manual trigger from Actions tab
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "scripts/generate_terminal.py"
+
+jobs:
+  generate:
+    name: Generate & Commit Terminal SVG
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # needed to commit the generated SVG back
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate terminal card
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: ${{ github.repository_owner }}
+        run: python scripts/generate_terminal.py
+
+      - name: Commit updated SVG
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name  "github-actions[bot]"
+          git add output/terminal.svg
+          git diff --staged --quiet \
+            || git commit -m "chore: refresh terminal card [skip ci]"
+          git push
