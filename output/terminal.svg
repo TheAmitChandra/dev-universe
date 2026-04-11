@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
-     viewBox="0 0 860 801" width="860" height="801"
+     viewBox="0 0 860 870" width="860" height="870"
      role="img" aria-label="GitHub Terminal Profile Card">
 <style>
   text, tspan { font-family: 'Cascadia Code','Cascadia Mono','Consolas','Menlo','Monaco','Liberation Mono','Courier New',monospace; font-size: 13px; }
@@ -12,11 +12,11 @@
     0%,49% { opacity:1; } 50%,100% { opacity:0; }
   }
 </style>
-<rect width="860" height="801" rx="12" ry="12" fill="#0d1117"/>
+<rect width="860" height="870" rx="12" ry="12" fill="#0d1117"/>
 <rect width="860" height="52" rx="12" ry="12" fill="#161b22"/><rect y="40" width="860" height="12" fill="#161b22"/>
 <rect x="1" y="1" width="858" height="39" rx="11" ry="11" fill="none" stroke="#58a6ff" stroke-width="0.4" opacity="0.25"/>
 <line x1="0" y1="40" x2="860" y2="40" stroke="#30363d" stroke-width="1"/>
-<rect width="860" height="801" rx="12" ry="12" fill="none" stroke="#30363d" stroke-width="1"/>
+<rect width="860" height="870" rx="12" ry="12" fill="none" stroke="#30363d" stroke-width="1"/>
 <!-- title bar -->
 <circle cx="22" cy="20" r="6.5" fill="#ff5f57"/><circle cx="44" cy="20" r="6.5" fill="#febc2e"/><circle cx="66" cy="20" r="6.5" fill="#28c840"/>
 <circle cx="20" cy="18" r="2" fill="#ffffff" opacity="0.35"/><circle cx="42" cy="18" r="2" fill="#ffffff" opacity="0.35"/><circle cx="64" cy="18" r="2" fill="#ffffff" opacity="0.35"/>
@@ -207,6 +207,23 @@
 <line x1="14" y1="758" x2="846" y2="758" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
 <line x1="14" y1="762" x2="846" y2="762" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
 <line x1="14" y1="766" x2="846" y2="766" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="770" x2="846" y2="770" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="774" x2="846" y2="774" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="778" x2="846" y2="778" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="782" x2="846" y2="782" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="786" x2="846" y2="786" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="790" x2="846" y2="790" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="794" x2="846" y2="794" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="798" x2="846" y2="798" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="802" x2="846" y2="802" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="806" x2="846" y2="806" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="810" x2="846" y2="810" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="814" x2="846" y2="814" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="818" x2="846" y2="818" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="822" x2="846" y2="822" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="826" x2="846" y2="826" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="830" x2="846" y2="830" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="834" x2="846" y2="834" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
 </g>
 <!-- terminal content -->
 <text x="28" y="79" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 0.25s"><tspan fill="#d2a8ff"># ── identity </tspan><tspan fill="#3d444d">──────────────────────────────────────────────</tspan></text>
@@ -216,32 +233,35 @@
 <text x="28" y="171" xml:space="preserve"></text>
 <text x="28" y="194" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 1.28s"><tspan fill="#d2a8ff"># ── stats </tspan><tspan fill="#3d444d">─────────────────────────────────────────────────</tspan></text>
 <text x="28" y="217" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 1.38s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#e6edf3">github --stats</tspan></text>
-<text x="28" y="240" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 1.83s"><tspan fill="#8b949e">  </tspan><tspan fill="#3d444d">FOLLOWERS    </tspan><tspan fill="#3d444d">FOLLOWING    </tspan><tspan fill="#3d444d">REPOS      </tspan><tspan fill="#3d444d">STARS      </tspan><tspan fill="#3d444d">FORKS</tspan></text>
-<text x="28" y="263" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 1.93s"><tspan fill="#8b949e">  </tspan><tspan fill="#3d444d">───────────  </tspan><tspan fill="#3d444d">───────────  </tspan><tspan fill="#3d444d">─────────  </tspan><tspan fill="#3d444d">─────────  </tspan><tspan fill="#3d444d">───────</tspan></text>
-<text x="28" y="286" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 2.07s"><tspan fill="#8b949e">  </tspan><tspan fill="#f0883e">0            </tspan><tspan fill="#f0883e">3            </tspan><tspan fill="#f0883e">19         </tspan><tspan fill="#e3b341">★ 0        </tspan><tspan fill="#ff7b72">⑂ 0</tspan></text>
+<text x="28" y="240" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 1.83s"><tspan fill="#8b949e">  </tspan><tspan fill="#3d444d">FOLLOWERS   </tspan><tspan fill="#3d444d">FOLLOWING   </tspan><tspan fill="#3d444d">PUBLIC    </tspan><tspan fill="#3d444d">PRIVATE   </tspan><tspan fill="#3d444d">STARS     </tspan><tspan fill="#3d444d">FORKS</tspan></text>
+<text x="28" y="263" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 1.93s"><tspan fill="#8b949e">  </tspan><tspan fill="#3d444d">──────────  </tspan><tspan fill="#3d444d">──────────  </tspan><tspan fill="#3d444d">────────  </tspan><tspan fill="#3d444d">────────  </tspan><tspan fill="#3d444d">────────  </tspan><tspan fill="#3d444d">─────</tspan></text>
+<text x="28" y="286" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 2.07s"><tspan fill="#8b949e">  </tspan><tspan fill="#f0883e">0           </tspan><tspan fill="#f0883e">3           </tspan><tspan fill="#f0883e">19        </tspan><tspan fill="#3d444d">N/A       </tspan><tspan fill="#e3b341">★ 0       </tspan><tspan fill="#ff7b72">⑂ 0</tspan></text>
 <text x="28" y="309" xml:space="preserve"></text>
 <text x="28" y="332" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 2.52s"><tspan fill="#d2a8ff"># ── activity </tspan><tspan fill="#3d444d">──────────────────────────────────────────────</tspan></text>
 <text x="28" y="355" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 2.62s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#e6edf3">git log --all --since=&quot;30 days&quot; --oneline</tspan></text>
-<text x="28" y="378" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 3.07s"><tspan fill="#8b949e">  </tspan><tspan fill="#56d364">█</tspan><tspan fill="#3d444d">░░░░░░░░░░░░░░░░░░░</tspan><tspan fill="#f0883e">  14</tspan><tspan fill="#8b949e"> commits  ·  </tspan><tspan fill="#f0883e">2</tspan><tspan fill="#8b949e"> active days  ·  </tspan><tspan fill="#d2a8ff">Weekend Warrior</tspan></text>
-<text x="28" y="401" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 3.31s"><tspan fill="#8b949e">  </tspan><tspan fill="#8b949e">Most active day: </tspan><tspan fill="#f0883e">Wednesday</tspan><tspan fill="#8b949e">   Primary language: </tspan><tspan fill="#da5b0b">Jupyter Notebook</tspan></text>
-<text x="28" y="424" xml:space="preserve"></text>
-<text x="28" y="447" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 3.76s"><tspan fill="#d2a8ff"># ── repos </tspan><tspan fill="#3d444d">─────────────────────────────────────────────────</tspan></text>
-<text x="28" y="470" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 3.86s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#e6edf3">ls ~/repos/ --sort=stars -n 5</tspan></text>
-<text x="28" y="493" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 4.31s"><tspan fill="#e3b341">  ★ </tspan><tspan fill="#f0883e">    0  </tspan><tspan fill="#79c0ff">dev-universe                  </tspan><tspan fill="#3572a5">Python          </tspan><tspan fill="#3d444d">today</tspan></text>
-<text x="28" y="516" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 4.49s"><tspan fill="#e3b341">  ★ </tspan><tspan fill="#f0883e">    0  </tspan><tspan fill="#79c0ff">My-Portfolio                  </tspan><tspan fill="#3178c6">TypeScript      </tspan><tspan fill="#3d444d">1mo ago</tspan></text>
-<text x="28" y="539" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 4.67s"><tspan fill="#e3b341">  ★ </tspan><tspan fill="#f0883e">    0  </tspan><tspan fill="#79c0ff">TheAmitChandra                </tspan><tspan fill="#f1e05a">JavaScript      </tspan><tspan fill="#3d444d">1mo ago</tspan></text>
-<text x="28" y="562" xml:space="preserve"></text>
-<text x="28" y="585" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 4.85s"><tspan fill="#d2a8ff"># ── languages </tspan><tspan fill="#3d444d">─────────────────────────────────────────────</tspan></text>
-<text x="28" y="608" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 4.95s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#e6edf3">cat ~/.config/languages</tspan></text>
-<text x="28" y="631" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.40s"><tspan fill="#da5b0b">  ● </tspan><tspan fill="#da5b0b">Jupyter Notebook    </tspan><tspan fill="#56d364">██████████</tspan><tspan fill="#3d444d">░░░░░░</tspan><tspan fill="#f0883e">   61%</tspan></text>
-<text x="28" y="654" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.56s"><tspan fill="#3178c6">  ● </tspan><tspan fill="#3178c6">TypeScript          </tspan><tspan fill="#56d364">███</tspan><tspan fill="#3d444d">░░░░░░░░░░░░░</tspan><tspan fill="#f0883e">   20%</tspan></text>
-<text x="28" y="677" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.72s"><tspan fill="#3572a5">  ● </tspan><tspan fill="#3572a5">Python              </tspan><tspan fill="#56d364">███</tspan><tspan fill="#3d444d">░░░░░░░░░░░░░</tspan><tspan fill="#f0883e">   17%</tspan></text>
-<text x="28" y="700" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.88s"><tspan fill="#41b883">  ● </tspan><tspan fill="#41b883">Vue                 </tspan><tspan fill="#3d444d">░░░░░░░░░░░░░░░░</tspan><tspan fill="#f0883e">    2%</tspan></text>
-<text x="28" y="723" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 6.04s"><tspan fill="#f1e05a">  ● </tspan><tspan fill="#f1e05a">JavaScript          </tspan><tspan fill="#3d444d">░░░░░░░░░░░░░░░░</tspan><tspan fill="#f0883e">    1%</tspan></text>
-<text x="28" y="746" xml:space="preserve"></text>
-<text x="28" y="769" xml:space="preserve" style="opacity:0;animation:fadein 0.05s ease forwards 6.20s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#7ee787" style="animation:blink 1.1s steps(2,end) infinite 6.28s">█</tspan></text>
+<text x="28" y="378" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 3.07s"><tspan fill="#8b949e">  </tspan><tspan fill="#56d364">█</tspan><tspan fill="#3d444d">░░░░░░░░░░░░░░░░░░░</tspan><tspan fill="#f0883e">  15</tspan><tspan fill="#8b949e"> commits  ·  </tspan><tspan fill="#f0883e">2</tspan><tspan fill="#8b949e"> active days  ·  </tspan><tspan fill="#d2a8ff">Weekend Warrior</tspan></text>
+<text x="28" y="401" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 3.31s"><tspan fill="#8b949e">  </tspan><tspan fill="#8b949e">Peak commit day: </tspan><tspan fill="#f0883e">Wednesday</tspan><tspan fill="#3d444d">  ·  </tspan><tspan fill="#e3b341">11</tspan><tspan fill="#8b949e"> commits  ·  </tspan><tspan fill="#da5b0b">Jupyter Notebook</tspan></text>
+<text x="28" y="424" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 3.55s"><tspan fill="#8b949e">  </tspan><tspan fill="#3d444d">Mon  </tspan><tspan fill="#3d444d">Tue  </tspan><tspan fill="#3d444d">Wed  </tspan><tspan fill="#3d444d">Thu  </tspan><tspan fill="#3d444d">Fri  </tspan><tspan fill="#3d444d">Sat  </tspan><tspan fill="#3d444d">Sun  </tspan></text>
+<text x="28" y="447" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 3.69s"><tspan fill="#8b949e">  </tspan><tspan fill="#3d444d"> ·   </tspan><tspan fill="#3d444d"> ·   </tspan><tspan fill="#f0883e"> █   </tspan><tspan fill="#3d444d"> ·   </tspan><tspan fill="#3d444d"> ·   </tspan><tspan fill="#56d364"> ▃   </tspan><tspan fill="#3d444d"> ·   </tspan></text>
+<text x="28" y="470" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 3.83s"><tspan fill="#8b949e">  </tspan><tspan fill="#3d444d"> 0   </tspan><tspan fill="#3d444d"> 0   </tspan><tspan fill="#f0883e"> 11  </tspan><tspan fill="#3d444d"> 0   </tspan><tspan fill="#3d444d"> 0   </tspan><tspan fill="#8b949e"> 4   </tspan><tspan fill="#3d444d"> 0   </tspan></text>
+<text x="28" y="493" xml:space="preserve"></text>
+<text x="28" y="516" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 4.28s"><tspan fill="#d2a8ff"># ── repos </tspan><tspan fill="#3d444d">─────────────────────────────────────────────────</tspan></text>
+<text x="28" y="539" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 4.38s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#e6edf3">ls ~/repos/ --sort=stars -n 5</tspan></text>
+<text x="28" y="562" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 4.83s"><tspan fill="#e3b341">  ★ </tspan><tspan fill="#f0883e">    0  </tspan><tspan fill="#79c0ff">dev-universe                  </tspan><tspan fill="#3572a5">Python          </tspan><tspan fill="#3d444d">today</tspan></text>
+<text x="28" y="585" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.01s"><tspan fill="#e3b341">  ★ </tspan><tspan fill="#f0883e">    0  </tspan><tspan fill="#79c0ff">My-Portfolio                  </tspan><tspan fill="#3178c6">TypeScript      </tspan><tspan fill="#3d444d">1mo ago</tspan></text>
+<text x="28" y="608" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.19s"><tspan fill="#e3b341">  ★ </tspan><tspan fill="#f0883e">    0  </tspan><tspan fill="#79c0ff">TheAmitChandra                </tspan><tspan fill="#f1e05a">JavaScript      </tspan><tspan fill="#3d444d">1mo ago</tspan></text>
+<text x="28" y="631" xml:space="preserve"></text>
+<text x="28" y="654" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.37s"><tspan fill="#d2a8ff"># ── languages </tspan><tspan fill="#3d444d">─────────────────────────────────────────────</tspan></text>
+<text x="28" y="677" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.47s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#e6edf3">cat ~/.config/languages</tspan></text>
+<text x="28" y="700" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.92s"><tspan fill="#da5b0b">  ● </tspan><tspan fill="#da5b0b">Jupyter Notebook    </tspan><tspan fill="#56d364">██████████</tspan><tspan fill="#3d444d">░░░░░░</tspan><tspan fill="#f0883e">   61%</tspan></text>
+<text x="28" y="723" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 6.08s"><tspan fill="#3178c6">  ● </tspan><tspan fill="#3178c6">TypeScript          </tspan><tspan fill="#56d364">███</tspan><tspan fill="#3d444d">░░░░░░░░░░░░░</tspan><tspan fill="#f0883e">   20%</tspan></text>
+<text x="28" y="746" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 6.24s"><tspan fill="#3572a5">  ● </tspan><tspan fill="#3572a5">Python              </tspan><tspan fill="#56d364">███</tspan><tspan fill="#3d444d">░░░░░░░░░░░░░</tspan><tspan fill="#f0883e">   17%</tspan></text>
+<text x="28" y="769" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 6.40s"><tspan fill="#41b883">  ● </tspan><tspan fill="#41b883">Vue                 </tspan><tspan fill="#3d444d">░░░░░░░░░░░░░░░░</tspan><tspan fill="#f0883e">    2%</tspan></text>
+<text x="28" y="792" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 6.56s"><tspan fill="#f1e05a">  ● </tspan><tspan fill="#f1e05a">JavaScript          </tspan><tspan fill="#3d444d">░░░░░░░░░░░░░░░░</tspan><tspan fill="#f0883e">    1%</tspan></text>
+<text x="28" y="815" xml:space="preserve"></text>
+<text x="28" y="838" xml:space="preserve" style="opacity:0;animation:fadein 0.05s ease forwards 6.72s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#7ee787" style="animation:blink 1.1s steps(2,end) infinite 6.80s">█</tspan></text>
 <!-- footer -->
-<line x1="28" y1="771" x2="832" y2="771" stroke="#3d444d" stroke-width="0.8" stroke-dasharray="4,4"/>
-<text x="28" y="790" fill="#6e7681" font-size="11px">github.com/TheAmitChandra</text>
-<text x="832" y="790" text-anchor="end" fill="#6e7681" font-size="11px">Updated: Apr 11, 2026 (UTC)</text>
+<line x1="28" y1="840" x2="832" y2="840" stroke="#3d444d" stroke-width="0.8" stroke-dasharray="4,4"/>
+<text x="28" y="859" fill="#6e7681" font-size="11px">github.com/TheAmitChandra</text>
+<text x="832" y="859" text-anchor="end" fill="#6e7681" font-size="11px">Updated: Apr 11, 2026 (UTC)</text>
 </svg>
