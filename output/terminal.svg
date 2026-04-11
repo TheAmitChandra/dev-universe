@@ -1,45 +1,247 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
-     viewBox="0 0 800 522"
-     width="800" height="522"
+     viewBox="0 0 860 801" width="860" height="801"
      role="img" aria-label="GitHub Terminal Profile Card">
 <style>
   text, tspan { font-family: 'Cascadia Code','Cascadia Mono','Consolas','Menlo','Monaco','Liberation Mono','Courier New',monospace; font-size: 13px; }
   @keyframes fadein {
-    from { opacity: 0; transform: translateY(5px); }
-    to   { opacity: 1; transform: translateY(0);   }
+    from { opacity:0; transform:translateY(6px); }
+    to   { opacity:1; transform:translateY(0);   }
   }
   @keyframes blink {
-    0%, 49% { opacity: 1; }
-    50%, 100% { opacity: 0; }
+    0%,49% { opacity:1; } 50%,100% { opacity:0; }
   }
 </style>
-<rect width="800" height="522" rx="10" ry="10" fill="#0d1117"/>
-<rect width="800" height="48" rx="10" ry="10" fill="#161b22"/><rect y="38" width="800" height="10" fill="#161b22"/>
-<line x1="0" y1="38" x2="800" y2="38" stroke="#30363d" stroke-width="1"/>
-<rect width="800" height="522" rx="10" ry="10" fill="none" stroke="#30363d" stroke-width="1"/>
+<rect width="860" height="801" rx="12" ry="12" fill="#0d1117"/>
+<rect width="860" height="52" rx="12" ry="12" fill="#161b22"/><rect y="40" width="860" height="12" fill="#161b22"/>
+<rect x="1" y="1" width="858" height="39" rx="11" ry="11" fill="none" stroke="#58a6ff" stroke-width="0.4" opacity="0.25"/>
+<line x1="0" y1="40" x2="860" y2="40" stroke="#30363d" stroke-width="1"/>
+<rect width="860" height="801" rx="12" ry="12" fill="none" stroke="#30363d" stroke-width="1"/>
 <!-- title bar -->
-<circle cx="20" cy="19" r="6" fill="#ff5f57"/><circle cx="40" cy="19" r="6" fill="#febc2e"/><circle cx="60" cy="19" r="6" fill="#28c840"/>
-<text x="400" y="24" text-anchor="middle" fill="#8b949e" font-size="13px">TheAmitChandra@github:~</text>
+<circle cx="22" cy="20" r="6.5" fill="#ff5f57"/><circle cx="44" cy="20" r="6.5" fill="#febc2e"/><circle cx="66" cy="20" r="6.5" fill="#28c840"/>
+<circle cx="20" cy="18" r="2" fill="#ffffff" opacity="0.35"/><circle cx="42" cy="18" r="2" fill="#ffffff" opacity="0.35"/><circle cx="64" cy="18" r="2" fill="#ffffff" opacity="0.35"/>
+<text x="430" y="25" text-anchor="middle" fill="#8b949e" font-size="13px">TheAmitChandra@github — terminal</text>
+<circle cx="838" cy="20" r="4" fill="#28c840" opacity="0.8"/>
+<text x="828" y="25" text-anchor="end" fill="#3d444d" font-size="11px">live</text>
+<!-- scanlines -->
+<g opacity="1">
+<line x1="14" y1="42" x2="846" y2="42" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="46" x2="846" y2="46" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="50" x2="846" y2="50" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="54" x2="846" y2="54" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="58" x2="846" y2="58" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="62" x2="846" y2="62" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="66" x2="846" y2="66" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="70" x2="846" y2="70" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="74" x2="846" y2="74" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="78" x2="846" y2="78" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="82" x2="846" y2="82" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="86" x2="846" y2="86" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="90" x2="846" y2="90" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="94" x2="846" y2="94" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="98" x2="846" y2="98" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="102" x2="846" y2="102" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="106" x2="846" y2="106" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="110" x2="846" y2="110" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="114" x2="846" y2="114" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="118" x2="846" y2="118" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="122" x2="846" y2="122" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="126" x2="846" y2="126" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="130" x2="846" y2="130" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="134" x2="846" y2="134" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="138" x2="846" y2="138" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="142" x2="846" y2="142" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="146" x2="846" y2="146" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="150" x2="846" y2="150" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="154" x2="846" y2="154" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="158" x2="846" y2="158" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="162" x2="846" y2="162" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="166" x2="846" y2="166" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="170" x2="846" y2="170" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="174" x2="846" y2="174" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="178" x2="846" y2="178" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="182" x2="846" y2="182" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="186" x2="846" y2="186" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="190" x2="846" y2="190" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="194" x2="846" y2="194" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="198" x2="846" y2="198" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="202" x2="846" y2="202" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="206" x2="846" y2="206" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="210" x2="846" y2="210" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="214" x2="846" y2="214" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="218" x2="846" y2="218" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="222" x2="846" y2="222" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="226" x2="846" y2="226" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="230" x2="846" y2="230" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="234" x2="846" y2="234" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="238" x2="846" y2="238" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="242" x2="846" y2="242" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="246" x2="846" y2="246" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="250" x2="846" y2="250" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="254" x2="846" y2="254" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="258" x2="846" y2="258" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="262" x2="846" y2="262" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="266" x2="846" y2="266" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="270" x2="846" y2="270" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="274" x2="846" y2="274" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="278" x2="846" y2="278" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="282" x2="846" y2="282" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="286" x2="846" y2="286" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="290" x2="846" y2="290" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="294" x2="846" y2="294" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="298" x2="846" y2="298" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="302" x2="846" y2="302" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="306" x2="846" y2="306" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="310" x2="846" y2="310" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="314" x2="846" y2="314" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="318" x2="846" y2="318" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="322" x2="846" y2="322" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="326" x2="846" y2="326" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="330" x2="846" y2="330" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="334" x2="846" y2="334" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="338" x2="846" y2="338" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="342" x2="846" y2="342" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="346" x2="846" y2="346" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="350" x2="846" y2="350" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="354" x2="846" y2="354" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="358" x2="846" y2="358" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="362" x2="846" y2="362" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="366" x2="846" y2="366" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="370" x2="846" y2="370" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="374" x2="846" y2="374" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="378" x2="846" y2="378" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="382" x2="846" y2="382" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="386" x2="846" y2="386" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="390" x2="846" y2="390" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="394" x2="846" y2="394" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="398" x2="846" y2="398" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="402" x2="846" y2="402" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="406" x2="846" y2="406" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="410" x2="846" y2="410" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="414" x2="846" y2="414" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="418" x2="846" y2="418" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="422" x2="846" y2="422" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="426" x2="846" y2="426" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="430" x2="846" y2="430" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="434" x2="846" y2="434" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="438" x2="846" y2="438" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="442" x2="846" y2="442" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="446" x2="846" y2="446" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="450" x2="846" y2="450" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="454" x2="846" y2="454" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="458" x2="846" y2="458" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="462" x2="846" y2="462" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="466" x2="846" y2="466" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="470" x2="846" y2="470" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="474" x2="846" y2="474" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="478" x2="846" y2="478" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="482" x2="846" y2="482" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="486" x2="846" y2="486" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="490" x2="846" y2="490" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="494" x2="846" y2="494" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="498" x2="846" y2="498" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="502" x2="846" y2="502" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="506" x2="846" y2="506" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="510" x2="846" y2="510" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="514" x2="846" y2="514" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="518" x2="846" y2="518" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="522" x2="846" y2="522" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="526" x2="846" y2="526" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="530" x2="846" y2="530" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="534" x2="846" y2="534" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="538" x2="846" y2="538" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="542" x2="846" y2="542" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="546" x2="846" y2="546" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="550" x2="846" y2="550" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="554" x2="846" y2="554" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="558" x2="846" y2="558" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="562" x2="846" y2="562" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="566" x2="846" y2="566" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="570" x2="846" y2="570" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="574" x2="846" y2="574" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="578" x2="846" y2="578" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="582" x2="846" y2="582" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="586" x2="846" y2="586" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="590" x2="846" y2="590" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="594" x2="846" y2="594" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="598" x2="846" y2="598" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="602" x2="846" y2="602" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="606" x2="846" y2="606" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="610" x2="846" y2="610" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="614" x2="846" y2="614" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="618" x2="846" y2="618" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="622" x2="846" y2="622" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="626" x2="846" y2="626" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="630" x2="846" y2="630" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="634" x2="846" y2="634" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="638" x2="846" y2="638" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="642" x2="846" y2="642" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="646" x2="846" y2="646" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="650" x2="846" y2="650" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="654" x2="846" y2="654" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="658" x2="846" y2="658" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="662" x2="846" y2="662" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="666" x2="846" y2="666" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="670" x2="846" y2="670" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="674" x2="846" y2="674" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="678" x2="846" y2="678" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="682" x2="846" y2="682" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="686" x2="846" y2="686" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="690" x2="846" y2="690" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="694" x2="846" y2="694" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="698" x2="846" y2="698" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="702" x2="846" y2="702" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="706" x2="846" y2="706" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="710" x2="846" y2="710" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="714" x2="846" y2="714" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="718" x2="846" y2="718" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="722" x2="846" y2="722" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="726" x2="846" y2="726" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="730" x2="846" y2="730" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="734" x2="846" y2="734" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="738" x2="846" y2="738" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="742" x2="846" y2="742" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="746" x2="846" y2="746" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="750" x2="846" y2="750" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="754" x2="846" y2="754" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="758" x2="846" y2="758" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="762" x2="846" y2="762" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+<line x1="14" y1="766" x2="846" y2="766" stroke="#ffffff" stroke-width="0.6" opacity="0.018"/>
+</g>
 <!-- terminal content -->
-<text x="26" y="78" xml:space="preserve" style="opacity:0;animation:fadein 0.18s ease forwards 0.30s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#e6edf3">whoami</tspan></text>
-<text x="26" y="100" xml:space="preserve" style="opacity:0;animation:fadein 0.18s ease forwards 0.85s"><tspan fill="#8b949e">  </tspan><tspan fill="#e6edf3">Amit Chandra</tspan></text>
-<text x="26" y="122" xml:space="preserve" style="opacity:0;animation:fadein 0.18s ease forwards 1.17s"><tspan fill="#8b949e">  </tspan><tspan fill="#f0883e">0</tspan><tspan fill="#8b949e"> followers  ·  </tspan><tspan fill="#f0883e">19</tspan><tspan fill="#8b949e"> public repos  ·  since </tspan><tspan fill="#f0883e">2024</tspan></text>
-<text x="26" y="144" xml:space="preserve"></text>
-<text x="26" y="166" xml:space="preserve" style="opacity:0;animation:fadein 0.18s ease forwards 1.72s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#e6edf3">git log --all --oneline | wc -l</tspan></text>
-<text x="26" y="188" xml:space="preserve" style="opacity:0;animation:fadein 0.18s ease forwards 2.27s"><tspan fill="#8b949e">  </tspan><tspan fill="#f0883e">13</tspan><tspan fill="#8b949e"> recent commits  ·  ★ </tspan><tspan fill="#e3b341">0</tspan><tspan fill="#8b949e"> total stars  ·  </tspan><tspan fill="#f0883e">19</tspan><tspan fill="#8b949e"> public repos</tspan></text>
-<text x="26" y="210" xml:space="preserve"></text>
-<text x="26" y="232" xml:space="preserve" style="opacity:0;animation:fadein 0.18s ease forwards 2.82s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#e6edf3">ls repos/ --sort=stars</tspan></text>
-<text x="26" y="254" xml:space="preserve" style="opacity:0;animation:fadein 0.18s ease forwards 3.37s"><tspan fill="#e3b341">★ </tspan><tspan fill="#f0883e">    0  </tspan><tspan fill="#79c0ff">dev-universe            </tspan><tspan fill="#3572a5">Python       </tspan><tspan fill="#444c56">today</tspan></text>
-<text x="26" y="276" xml:space="preserve" style="opacity:0;animation:fadein 0.18s ease forwards 3.59s"><tspan fill="#e3b341">★ </tspan><tspan fill="#f0883e">    0  </tspan><tspan fill="#79c0ff">My-Portfolio            </tspan><tspan fill="#3178c6">TypeScript   </tspan><tspan fill="#444c56">1mo ago</tspan></text>
-<text x="26" y="298" xml:space="preserve" style="opacity:0;animation:fadein 0.18s ease forwards 3.81s"><tspan fill="#e3b341">★ </tspan><tspan fill="#f0883e">    0  </tspan><tspan fill="#79c0ff">TheAmitChandra          </tspan><tspan fill="#f1e05a">JavaScript   </tspan><tspan fill="#444c56">1mo ago</tspan></text>
-<text x="26" y="320" xml:space="preserve"></text>
-<text x="26" y="342" xml:space="preserve" style="opacity:0;animation:fadein 0.18s ease forwards 4.03s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#e6edf3">cat ~/.config/languages</tspan></text>
-<text x="26" y="364" xml:space="preserve" style="opacity:0;animation:fadein 0.18s ease forwards 4.58s"><tspan fill="#8b949e">  </tspan><tspan fill="#da5b0b">Jupyter Notebo  </tspan><tspan fill="#56d364">██████</tspan><tspan fill="#444c56">░░░░</tspan><tspan fill="#f0883e">  61%</tspan></text>
-<text x="26" y="386" xml:space="preserve" style="opacity:0;animation:fadein 0.18s ease forwards 4.80s"><tspan fill="#8b949e">  </tspan><tspan fill="#3178c6">TypeScript      </tspan><tspan fill="#56d364">██</tspan><tspan fill="#444c56">░░░░░░░░</tspan><tspan fill="#f0883e">  20%</tspan></text>
-<text x="26" y="408" xml:space="preserve" style="opacity:0;animation:fadein 0.18s ease forwards 5.02s"><tspan fill="#8b949e">  </tspan><tspan fill="#3572a5">Python          </tspan><tspan fill="#56d364">██</tspan><tspan fill="#444c56">░░░░░░░░</tspan><tspan fill="#f0883e">  17%</tspan></text>
-<text x="26" y="430" xml:space="preserve" style="opacity:0;animation:fadein 0.18s ease forwards 5.24s"><tspan fill="#8b949e">  </tspan><tspan fill="#41b883">Vue             </tspan><tspan fill="#444c56">░░░░░░░░░░</tspan><tspan fill="#f0883e">  2%</tspan></text>
-<text x="26" y="452" xml:space="preserve" style="opacity:0;animation:fadein 0.18s ease forwards 5.46s"><tspan fill="#8b949e">  </tspan><tspan fill="#f1e05a">JavaScript      </tspan><tspan fill="#444c56">░░░░░░░░░░</tspan><tspan fill="#f0883e">  1%</tspan></text>
-<text x="26" y="474" xml:space="preserve"></text>
-<text x="26" y="496" xml:space="preserve" style="opacity:0;animation:fadein 0.05s ease forwards 5.68s,blink 1s steps(2,end) infinite 5.78s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#7ee787" style="animation:blink 1s steps(2,end) infinite 5.78s">█</tspan></text>
+<text x="28" y="79" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 0.25s"><tspan fill="#d2a8ff"># ── identity </tspan><tspan fill="#3d444d">──────────────────────────────────────────────</tspan></text>
+<text x="28" y="102" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 0.35s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#e6edf3">whoami</tspan></text>
+<text x="28" y="125" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 0.80s"><tspan fill="#8b949e">  </tspan><tspan fill="#e6edf3">Amit Chandra  ·  GitHub since 2024</tspan></text>
+<text x="28" y="148" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 1.04s"><tspan fill="#8b949e">  </tspan><tspan fill="#3d444d">"</tspan><tspan fill="#8b949e">AI Engineer | Passionate about turning data into actionable insights | P…</tspan><tspan fill="#3d444d">"</tspan></text>
+<text x="28" y="171" xml:space="preserve"></text>
+<text x="28" y="194" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 1.28s"><tspan fill="#d2a8ff"># ── stats </tspan><tspan fill="#3d444d">─────────────────────────────────────────────────</tspan></text>
+<text x="28" y="217" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 1.38s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#e6edf3">github --stats</tspan></text>
+<text x="28" y="240" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 1.83s"><tspan fill="#8b949e">  </tspan><tspan fill="#3d444d">FOLLOWERS    </tspan><tspan fill="#3d444d">FOLLOWING    </tspan><tspan fill="#3d444d">REPOS      </tspan><tspan fill="#3d444d">STARS      </tspan><tspan fill="#3d444d">FORKS</tspan></text>
+<text x="28" y="263" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 1.93s"><tspan fill="#8b949e">  </tspan><tspan fill="#3d444d">───────────  </tspan><tspan fill="#3d444d">───────────  </tspan><tspan fill="#3d444d">─────────  </tspan><tspan fill="#3d444d">─────────  </tspan><tspan fill="#3d444d">───────</tspan></text>
+<text x="28" y="286" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 2.07s"><tspan fill="#8b949e">  </tspan><tspan fill="#f0883e">0            </tspan><tspan fill="#f0883e">3            </tspan><tspan fill="#f0883e">19         </tspan><tspan fill="#e3b341">★ 0        </tspan><tspan fill="#ff7b72">⑂ 0</tspan></text>
+<text x="28" y="309" xml:space="preserve"></text>
+<text x="28" y="332" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 2.52s"><tspan fill="#d2a8ff"># ── activity </tspan><tspan fill="#3d444d">──────────────────────────────────────────────</tspan></text>
+<text x="28" y="355" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 2.62s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#e6edf3">git log --all --since=&quot;30 days&quot; --oneline</tspan></text>
+<text x="28" y="378" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 3.07s"><tspan fill="#8b949e">  </tspan><tspan fill="#56d364">█</tspan><tspan fill="#3d444d">░░░░░░░░░░░░░░░░░░░</tspan><tspan fill="#f0883e">  14</tspan><tspan fill="#8b949e"> commits  ·  </tspan><tspan fill="#f0883e">2</tspan><tspan fill="#8b949e"> active days  ·  </tspan><tspan fill="#d2a8ff">Weekend Warrior</tspan></text>
+<text x="28" y="401" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 3.31s"><tspan fill="#8b949e">  </tspan><tspan fill="#8b949e">Most active day: </tspan><tspan fill="#f0883e">Wednesday</tspan><tspan fill="#8b949e">   Primary language: </tspan><tspan fill="#da5b0b">Jupyter Notebook</tspan></text>
+<text x="28" y="424" xml:space="preserve"></text>
+<text x="28" y="447" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 3.76s"><tspan fill="#d2a8ff"># ── repos </tspan><tspan fill="#3d444d">─────────────────────────────────────────────────</tspan></text>
+<text x="28" y="470" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 3.86s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#e6edf3">ls ~/repos/ --sort=stars -n 5</tspan></text>
+<text x="28" y="493" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 4.31s"><tspan fill="#e3b341">  ★ </tspan><tspan fill="#f0883e">    0  </tspan><tspan fill="#79c0ff">dev-universe                  </tspan><tspan fill="#3572a5">Python          </tspan><tspan fill="#3d444d">today</tspan></text>
+<text x="28" y="516" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 4.49s"><tspan fill="#e3b341">  ★ </tspan><tspan fill="#f0883e">    0  </tspan><tspan fill="#79c0ff">My-Portfolio                  </tspan><tspan fill="#3178c6">TypeScript      </tspan><tspan fill="#3d444d">1mo ago</tspan></text>
+<text x="28" y="539" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 4.67s"><tspan fill="#e3b341">  ★ </tspan><tspan fill="#f0883e">    0  </tspan><tspan fill="#79c0ff">TheAmitChandra                </tspan><tspan fill="#f1e05a">JavaScript      </tspan><tspan fill="#3d444d">1mo ago</tspan></text>
+<text x="28" y="562" xml:space="preserve"></text>
+<text x="28" y="585" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 4.85s"><tspan fill="#d2a8ff"># ── languages </tspan><tspan fill="#3d444d">─────────────────────────────────────────────</tspan></text>
+<text x="28" y="608" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 4.95s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#e6edf3">cat ~/.config/languages</tspan></text>
+<text x="28" y="631" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.40s"><tspan fill="#da5b0b">  ● </tspan><tspan fill="#da5b0b">Jupyter Notebook    </tspan><tspan fill="#56d364">██████████</tspan><tspan fill="#3d444d">░░░░░░</tspan><tspan fill="#f0883e">   61%</tspan></text>
+<text x="28" y="654" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.56s"><tspan fill="#3178c6">  ● </tspan><tspan fill="#3178c6">TypeScript          </tspan><tspan fill="#56d364">███</tspan><tspan fill="#3d444d">░░░░░░░░░░░░░</tspan><tspan fill="#f0883e">   20%</tspan></text>
+<text x="28" y="677" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.72s"><tspan fill="#3572a5">  ● </tspan><tspan fill="#3572a5">Python              </tspan><tspan fill="#56d364">███</tspan><tspan fill="#3d444d">░░░░░░░░░░░░░</tspan><tspan fill="#f0883e">   17%</tspan></text>
+<text x="28" y="700" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.88s"><tspan fill="#41b883">  ● </tspan><tspan fill="#41b883">Vue                 </tspan><tspan fill="#3d444d">░░░░░░░░░░░░░░░░</tspan><tspan fill="#f0883e">    2%</tspan></text>
+<text x="28" y="723" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 6.04s"><tspan fill="#f1e05a">  ● </tspan><tspan fill="#f1e05a">JavaScript          </tspan><tspan fill="#3d444d">░░░░░░░░░░░░░░░░</tspan><tspan fill="#f0883e">    1%</tspan></text>
+<text x="28" y="746" xml:space="preserve"></text>
+<text x="28" y="769" xml:space="preserve" style="opacity:0;animation:fadein 0.05s ease forwards 6.20s"><tspan fill="#58a6ff">TheAmitChandra@github</tspan><tspan fill="#7ee787">:~$ </tspan><tspan fill="#7ee787" style="animation:blink 1.1s steps(2,end) infinite 6.28s">█</tspan></text>
+<!-- footer -->
+<line x1="28" y1="771" x2="832" y2="771" stroke="#3d444d" stroke-width="0.8" stroke-dasharray="4,4"/>
+<text x="28" y="790" fill="#6e7681" font-size="11px">github.com/TheAmitChandra</text>
+<text x="832" y="790" text-anchor="end" fill="#6e7681" font-size="11px">Updated: Apr 11, 2026 (UTC)</text>
 </svg>
