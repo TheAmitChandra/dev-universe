@@ -350,3 +350,75 @@ class GitHubAPI:
             )
         except Exception:
             return 0
+
+    def get_activity_stats(self) -> Dict:
+        """
+        Analyse the last ~100 public events to derive:
+          - total_commits   : distinct commits across PushEvents
+          - active_days     : unique calendar days that had a push
+          - most_active_day : weekday name with the most pushes
+          - activity_label  : human-friendly status string
+        """
+        try:
+            events = self._make_request(
+                f"/users/{self.username}/events",
+                {"per_page": 100}
+            )
+            if not events:
+                return self._empty_activity()
+
+            push_events = [e for e in events if e.get("type") == "PushEvent"]
+            total_commits = sum(
+                e.get("payload", {}).get("distinct_size", 1)
+                for e in push_events
+            )
+
+            active_days: set = set()
+            day_counts: Dict[str, int] = {}
+
+            for e in push_events:
+                created = e.get("created_at", "")
+                if not created:
+                    continue
+                try:
+                    dt = datetime.strptime(created, "%Y-%m-%dT%H:%M:%SZ")
+                    active_days.add(dt.date())
+                    dow = dt.strftime("%A")
+                    day_counts[dow] = day_counts.get(dow, 0) + 1
+                except Exception:
+                    pass
+
+            n = len(active_days)
+            if n >= 20:
+                label = "Daily Coder"
+            elif n >= 12:
+                label = "Active Developer"
+            elif n >= 6:
+                label = "Regular Contributor"
+            elif n >= 2:
+                label = "Weekend Warrior"
+            else:
+                label = "Building in Stealth"
+
+            most_active = (
+                max(day_counts, key=lambda k: day_counts[k])
+                if day_counts else "N/A"
+            )
+
+            return {
+                "total_commits": total_commits,
+                "active_days": n,
+                "most_active_day": most_active,
+                "activity_label": label,
+            }
+        except Exception:
+            return self._empty_activity()
+
+    @staticmethod
+    def _empty_activity() -> Dict:
+        return {
+            "total_commits": 0,
+            "active_days": 0,
+            "most_active_day": "N/A",
+            "activity_label": "Building in Stealth",
+        }
