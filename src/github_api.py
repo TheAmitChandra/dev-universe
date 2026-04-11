@@ -331,6 +331,19 @@ class GitHubAPI:
         """Fetch public user profile from /users/{username}."""
         return self._make_request(f"/users/{self.username}") or {}
 
+    def get_private_repo_count(self) -> int:
+        """
+        Return the number of private repos owned by the authenticated user.
+        Requires a token; returns -1 (unknown) when unauthenticated.
+        """
+        if not self.token:
+            return -1   # unauthenticated — can't see private data
+        try:
+            data = self._make_request("/user")   # authenticated endpoint
+            return data.get("total_private_repos", 0)
+        except Exception:
+            return -1
+
     def get_recent_push_count(self) -> int:
         """
         Estimate commit activity from the last ~100 public events.
@@ -354,10 +367,13 @@ class GitHubAPI:
     def get_activity_stats(self) -> Dict:
         """
         Analyse the last ~100 public events to derive:
-          - total_commits   : distinct commits across PushEvents
-          - active_days     : unique calendar days that had a push
-          - most_active_day : weekday name with the most pushes
-          - activity_label  : human-friendly status string
+          - total_commits      : distinct commits across PushEvents
+          - active_days        : unique calendar days that had a push
+          - most_active_day    : weekday name with the most pushes
+          - most_commits_day   : weekday name with the highest commit count
+          - most_commits_count : number of commits on that peak day
+          - day_breakdown      : OrderedDict[weekday -> commit count] Mon–Sun
+          - activity_label     : human-friendly status string
         """
         try:
             events = self._make_request(
@@ -405,20 +421,34 @@ class GitHubAPI:
                 if day_counts else "N/A"
             )
 
+            # Ordered Mon → Sun breakdown
+            weekday_order = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+            day_breakdown = {d: day_counts.get(d, 0) for d in weekday_order}
+
+            peak_day   = most_active
+            peak_count = day_counts.get(peak_day, 0) if peak_day != "N/A" else 0
+
             return {
-                "total_commits": total_commits,
-                "active_days": n,
-                "most_active_day": most_active,
-                "activity_label": label,
+                "total_commits":      total_commits,
+                "active_days":        n,
+                "most_active_day":    most_active,
+                "most_commits_day":   peak_day,
+                "most_commits_count": peak_count,
+                "day_breakdown":      day_breakdown,
+                "activity_label":     label,
             }
         except Exception:
             return self._empty_activity()
 
     @staticmethod
     def _empty_activity() -> Dict:
+        weekday_order = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
         return {
-            "total_commits": 0,
-            "active_days": 0,
-            "most_active_day": "N/A",
-            "activity_label": "Building in Stealth",
+            "total_commits":      0,
+            "active_days":        0,
+            "most_active_day":    "N/A",
+            "most_commits_day":   "N/A",
+            "most_commits_count": 0,
+            "day_breakdown":      {d: 0 for d in weekday_order},
+            "activity_label":     "Building in Stealth",
         }

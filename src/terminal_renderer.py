@@ -341,31 +341,36 @@ class TerminalRenderer:
         section("stats")
         add(_prompt(p.username, "github --stats"), dt=0.45)
 
-        # Column header
+        # Column header: FOLLOWERS / FOLLOWING / PUBLIC / PRIVATE / STARS / FORKS
         add(_out(
-            ("FOLLOWERS ".ljust(13), C_DIM),
-            ("FOLLOWING ".ljust(13), C_DIM),
-            ("REPOS ".ljust(11),     C_DIM),
-            ("STARS ".ljust(11),     C_DIM),
+            ("FOLLOWERS ".ljust(12), C_DIM),
+            ("FOLLOWING ".ljust(12), C_DIM),
+            ("PUBLIC ".ljust(10),    C_DIM),
+            ("PRIVATE ".ljust(10),   C_DIM),
+            ("STARS ".ljust(10),     C_DIM),
             ("FORKS",                C_DIM),
         ), dt=0.10)
 
         # Separator
         add(_out(
-            ("\u2500" * 11 + "  ", C_DIM),
-            ("\u2500" * 11 + "  ", C_DIM),
-            ("\u2500" * 9  + "  ", C_DIM),
-            ("\u2500" * 9  + "  ", C_DIM),
-            ("\u2500" * 7,         C_DIM),
+            ("\u2500" * 10 + "  ", C_DIM),
+            ("\u2500" * 10 + "  ", C_DIM),
+            ("\u2500" * 8  + "  ", C_DIM),
+            ("\u2500" * 8  + "  ", C_DIM),
+            ("\u2500" * 8  + "  ", C_DIM),
+            ("\u2500" * 5,         C_DIM),
         ), dt=0.14)
 
         # Values
+        priv_s   = "N/A" if p.private_repos < 0 else _fmt(p.private_repos)
+        priv_clr = C_DIM if p.private_repos < 0 else (C_PURPLE if p.private_repos > 0 else C_OUT)
         add(_out(
-            (_fmt(p.followers).ljust(13),                         C_ACCENT),
-            (_fmt(p.following).ljust(13),                         C_ACCENT),
-            (_fmt(p.public_repos).ljust(11),                      C_ACCENT),
-            ((f"\u2605 {_fmt(p.total_stars)}").ljust(11),         C_YELLOW),
-            (f"\u2442 {_fmt(p.total_forks)}",                     C_PINK),
+            (_fmt(p.followers).ljust(12),                          C_ACCENT),
+            (_fmt(p.following).ljust(12),                          C_ACCENT),
+            (_fmt(p.public_repos).ljust(10),                       C_ACCENT),
+            (priv_s.ljust(10),                                     priv_clr),
+            ((f"\u2605 {_fmt(p.total_stars)}").ljust(10),          C_YELLOW),
+            (f"\u2442 {_fmt(p.total_forks)}",                      C_PINK),
         ), dt=0.45)
 
         blank()
@@ -389,13 +394,52 @@ class TerminalRenderer:
             (_esc(p.activity_label), C_PURPLE),
         ], dt=0.24)
 
-        if p.most_active_day and p.most_active_day != "N/A":
+        if p.most_commits_day and p.most_commits_count > 0:
             add(_out(
-                ("Most active day: ",      C_OUT),
-                (_esc(p.most_active_day),  C_ACCENT),
-                ("   Primary language: ",  C_OUT),
-                (_esc(p.primary_language), _lc(p.primary_language)),
-            ), dt=0.45)
+                ("Peak commit day: ",        C_OUT),
+                (_esc(p.most_commits_day),   C_ACCENT),
+                ("  \u00b7  ",               C_DIM),
+                (str(p.most_commits_count),  C_YELLOW),
+                (" commits  \u00b7  ",       C_OUT),
+                (_esc(p.primary_language),   _lc(p.primary_language)),
+            ), dt=0.24)
+
+        # Mon-Sun commit breakdown bars
+        if p.day_breakdown:
+            _DAY_KEYS = [
+                "Monday", "Tuesday", "Wednesday", "Thursday",
+                "Friday", "Saturday", "Sunday",
+            ]
+            _DAY_ABBR = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+            counts    = [p.day_breakdown.get(d, 0) for d in _DAY_KEYS]
+            max_c     = max(counts) if any(c > 0 for c in counts) else 1
+            _BC_CHARS = " \u2581\u2582\u2583\u2584\u2585\u2586\u2587\u2588"
+
+            def _bc(n: int) -> str:
+                if n == 0:
+                    return "\u00b7"
+                return _BC_CHARS[max(1, round(n / max_c * (len(_BC_CHARS) - 1)))]
+
+            def _bclr(n: int) -> str:
+                if n == 0:      return C_DIM
+                if n == max_c:  return C_ACCENT
+                return C_GREEN
+
+            hdr_parts: List[Tuple[str, str]] = [("  ", C_OUT)]
+            for abbr in _DAY_ABBR:
+                hdr_parts.append((abbr.ljust(5), C_DIM))
+            add(hdr_parts, dt=0.14)
+
+            bar_parts: List[Tuple[str, str]] = [("  ", C_OUT)]
+            for cnt in counts:
+                bar_parts.append((" " + _bc(cnt) + "   ", _bclr(cnt)))
+            add(bar_parts, dt=0.14)
+
+            cnt_parts: List[Tuple[str, str]] = [("  ", C_OUT)]
+            for cnt in counts:
+                col = C_ACCENT if cnt == max_c else (C_DIM if cnt == 0 else C_OUT)
+                cnt_parts.append((" " + str(cnt).ljust(4), col))
+            add(cnt_parts, dt=0.45)
 
         blank()
 

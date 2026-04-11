@@ -33,12 +33,16 @@ class ProfileData:
     followers: int
     following: int
     public_repos: int
+    private_repos: int          # -1 = unknown (no token)
     account_since: str          # "2019"
     total_stars: int
     total_forks: int
     recent_commits: int         # commits from last ~100 events
     active_days: int            # unique days with pushes in last 100 events
-    most_active_day: str        # e.g. "Friday"
+    most_active_day: str        # weekday with most push events
+    most_commits_day: str       # weekday with most commits
+    most_commits_count: int     # commits on that peak day
+    day_breakdown: Dict[str, int]  # Mon–Sun commit counts
     activity_label: str         # e.g. "Weekend Warrior"
     top_repos: List[RepoSummary]
     language_stats: Dict[str, float]   # lang -> percentage (0-100)
@@ -81,6 +85,9 @@ class ProfileBuilder:
         print("⚡  Counting recent activity…")
         activity = self.api.get_activity_stats()
         recent_commits = activity["total_commits"]
+
+        print("🔒  Checking private repos…")
+        private_repos = self.api.get_private_repo_count()
 
         # ── own (non-fork) repos ──────────────────────────────────
         own = [r for r in repos if not r.get("fork")]
@@ -158,12 +165,16 @@ class ProfileBuilder:
             followers=raw_profile.get("followers", 0),
             following=raw_profile.get("following", 0),
             public_repos=raw_profile.get("public_repos", 0),
+            private_repos=private_repos,
             account_since=since_year,
             total_stars=total_stars,
             total_forks=total_forks,
             recent_commits=recent_commits,
             active_days=activity["active_days"],
             most_active_day=activity["most_active_day"],
+            most_commits_day=activity["most_commits_day"],
+            most_commits_count=activity["most_commits_count"],
+            day_breakdown=activity["day_breakdown"],
             activity_label=activity["activity_label"],
             top_repos=top_repos,
             language_stats=top_langs,
