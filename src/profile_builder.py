@@ -27,11 +27,19 @@ class ProfileData:
     display_name: str
     bio: str
     location: str
+    website: str                # blog / website URL
+    company: str                # company name
+    twitter: str                # handle without @
     followers: int
+    following: int
     public_repos: int
     account_since: str          # "2019"
     total_stars: int
+    total_forks: int
     recent_commits: int         # commits from last ~100 events
+    active_days: int            # unique days with pushes in last 100 events
+    most_active_day: str        # e.g. "Friday"
+    activity_label: str         # e.g. "Weekend Warrior"
     top_repos: List[RepoSummary]
     language_stats: Dict[str, float]   # lang -> percentage (0-100)
 
@@ -71,7 +79,8 @@ class ProfileBuilder:
         repos = self.api.get_user_repos(max_repos=100)
 
         print("⚡  Counting recent activity…")
-        recent_commits = self.api.get_recent_push_count()
+        activity = self.api.get_activity_stats()
+        recent_commits = activity["total_commits"]
 
         # ── own (non-fork) repos ──────────────────────────────────
         own = [r for r in repos if not r.get("fork")]
@@ -121,14 +130,20 @@ class ProfileBuilder:
 
         top_langs = dict(list(lang_pct.items())[: self.max_languages])
 
-        # Total stars across own repos
+        # Aggregate totals across own repos
         total_stars = sum(r.get("stargazers_count", 0) for r in own)
+        total_forks = sum(r.get("forks_count", 0) for r in own)
 
         # Account creation year
         created_at = raw_profile.get("created_at", "")
         since_year = created_at[:4] if created_at else "N/A"
 
         display_name = raw_profile.get("name") or raw_profile.get("login") or self.api.username
+
+        # Clean up website URL for display
+        website_raw = raw_profile.get("blog") or ""
+        if website_raw and not website_raw.startswith("http"):
+            website_raw = "https://" + website_raw
 
         print("✅  Profile data ready.\n")
 
@@ -137,11 +152,19 @@ class ProfileBuilder:
             display_name=display_name,
             bio=raw_profile.get("bio") or "",
             location=raw_profile.get("location") or "",
+            website=website_raw,
+            company=(raw_profile.get("company") or "").lstrip("@").strip(),
+            twitter=raw_profile.get("twitter_username") or "",
             followers=raw_profile.get("followers", 0),
+            following=raw_profile.get("following", 0),
             public_repos=raw_profile.get("public_repos", 0),
             account_since=since_year,
             total_stars=total_stars,
+            total_forks=total_forks,
             recent_commits=recent_commits,
+            active_days=activity["active_days"],
+            most_active_day=activity["most_active_day"],
+            activity_label=activity["activity_label"],
             top_repos=top_repos,
             language_stats=top_langs,
         )
