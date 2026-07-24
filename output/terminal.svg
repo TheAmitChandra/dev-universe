@@ -275,7 +275,7 @@
 <text x="28" y="608" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.46s"><tspan fill="#3d444d">         </tspan><tspan fill="#8b949e">The Personal AI Assistant that connects every channel you use.</tspan></text>
 <text x="28" y="631" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.56s"><tspan fill="#e3b341">  ★ </tspan><tspan fill="#f0883e">    2  </tspan><tspan fill="#79c0ff">old-portfolio                 </tspan><tspan fill="#563d7c">CSS             </tspan><tspan fill="#3d444d">2mo ago</tspan></text>
 <text x="28" y="654" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.74s"><tspan fill="#e3b341">  ★ </tspan><tspan fill="#f0883e">    1  </tspan><tspan fill="#79c0ff">dev-universe                  </tspan><tspan fill="#3572a5">Python          </tspan><tspan fill="#3d444d">today</tspan></text>
-<text x="28" y="677" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.92s"><tspan fill="#e3b341">  ★ </tspan><tspan fill="#f0883e">    1  </tspan><tspan fill="#79c0ff">TheAmitChandra                </tspan><tspan fill="#f1e05a">JavaScript      </tspan><tspan fill="#3d444d">4d ago</tspan></text>
+<text x="28" y="677" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 5.92s"><tspan fill="#e3b341">  ★ </tspan><tspan fill="#f0883e">    1  </tspan><tspan fill="#79c0ff">TheAmitChandra                </tspan><tspan fill="#f1e05a">JavaScript      </tspan><tspan fill="#3d444d">5d ago</tspan></text>
 <text x="28" y="700" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 6.10s"><tspan fill="#e3b341">  ★ </tspan><tspan fill="#f0883e">    1  </tspan><tspan fill="#79c0ff">SudokuSolver                  </tspan><tspan fill="#8b949e">N/A             </tspan><tspan fill="#3d444d">2w ago</tspan></text>
 <text x="28" y="723" xml:space="preserve"></text>
 <text x="28" y="746" xml:space="preserve" style="opacity:0;animation:fadein 0.20s ease forwards 6.28s"><tspan fill="#d2a8ff"># ── languages </tspan><tspan fill="#3d444d">─────────────────────────────────────────────</tspan></text>
@@ -290,5 +290,5 @@
 <!-- footer -->
 <line x1="28" y1="932" x2="832" y2="932" stroke="#3d444d" stroke-width="0.8" stroke-dasharray="4,4"/>
 <text x="28" y="951" fill="#6e7681" font-size="11px">github.com/TheAmitChandra</text>
-<text x="832" y="951" text-anchor="end" fill="#6e7681" font-size="11px">Updated: Jul 23, 2026 (UTC)</text>
+<text x="832" y="951" text-anchor="end" fill="#6e7681" font-size="11px">Updated: Jul 24, 2026 (UTC)</text>
 </svg>
